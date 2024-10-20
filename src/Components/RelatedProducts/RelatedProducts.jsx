@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./RelatedProducts.css";
-import data_product from "../Assets/Frontend_Assets/data";
+// import data_product from "../Assets/Frontend_Assets/data";
 import Item from "../Item/Item";
 
-const RelatedProducts = () => {
+const Popular = () => {
+  const [popularProducts, setPopularProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/newcollections")
+      .then((response) => response.json())
+      .then((data) => setPopularProducts(data));
+  }, []);
+
   return (
-    <div className="relatedproducts">
-      <h1>Related Products</h1>
+    <div className="popular">
+      <h1>Popular Designs</h1>
       <hr />
-      <div className="relatedproducts-item">
-        {data_product.map((item, i) => {
+      <div className="popular-item">
+        {popularProducts.map((item, i) => {
           return (
             <Item
               key={i}
@@ -26,4 +34,4 @@ const RelatedProducts = () => {
   );
 };
 
-export default RelatedProducts;
+export default Popular;

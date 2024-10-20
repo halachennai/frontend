@@ -7,7 +7,7 @@ import { ShopContext } from "../../Context/ShopContext";
 const ProductDisplay = (props) => {
   const { product } = props;
   const { addToCart } = useContext(ShopContext);
-
+  const [mainImage, setMainImage] = useState(product.image); // Initialize with the main product image
   const [customizationInput, setCustomizationInput] = useState("-");
   const [selectedSize, setSelectedSize] = useState(""); // Add state for size selection
 
@@ -30,22 +30,31 @@ const ProductDisplay = (props) => {
     <div className="productdisplay">
       <div className="productdisplay-left">
         <div className="productdisplay-img-list">
-          <img src={product.image} alt="" />
+          {/* When clicking an image, set it as the main image */}
+          <img
+            src={product.image}
+            alt="Main Product"
+            onClick={() => setMainImage(product.image)}
+          />
           <img
             src={product.subimage1 ? product.subimage1 : product.image}
             alt="Product Image 1"
+            onClick={() => setMainImage(product.subimage1 || product.image)}
           />
           <img
             src={product.subimage2 ? product.subimage2 : product.image}
             alt="Product Image 2"
+            onClick={() => setMainImage(product.subimage2 || product.image)}
           />
           <img
             src={product.subimage3 ? product.subimage3 : product.image}
             alt="Product Image 3"
+            onClick={() => setMainImage(product.subimage3 || product.image)}
           />
         </div>
         <div className="productdisplay-img">
-          <img className="productdisplay-main-img" src={product.image} alt="" />
+          {/* Display the currently selected main image */}
+          <img className="productdisplay-main-img" src={mainImage} alt="Main" />
         </div>
       </div>
       <div className="productdisplay-right">
@@ -60,16 +69,16 @@ const ProductDisplay = (props) => {
         </div>
         <div className="productdisplay-right-prices">
           <div className="productdisplay-right-price-old">
-            ${product.old_price}
+            Rs.{product.old_price}
           </div>
           <div className="productdisplay-right-price-new">
-            ${product.new_price}
+            Rs.{product.new_price}
           </div>
         </div>
-        <div className="productdisplay-right-description">
+        {/* <div className="productdisplay-right-description">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
           quia quibusdam molestias facilis amet libero id ducimus non hic
-        </div>
+        </div> */}
         <div className="productdisplay-right-size">
           <h1>Select Size</h1>
           <div className="productdisplay-right-sizes">

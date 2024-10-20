@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./RelatedProducts.css";
-// import data_product from "../Assets/Frontend_Assets/data";
 import Item from "../Item/Item";
 
 const Popular = () => {
@@ -12,23 +11,24 @@ const Popular = () => {
       .then((data) => setPopularProducts(data));
   }, []);
 
+  // Get the last 4 products from popularProducts array
+  const lastFourProducts = popularProducts.slice(-4);
+
   return (
     <div className="popular">
       <h1>Popular Designs</h1>
       <hr />
       <div className="popular-item">
-        {popularProducts.map((item, i) => {
-          return (
-            <Item
-              key={i}
-              id={item.id}
-              name={item.name}
-              image={item.image}
-              new_price={item.new_price}
-              old_price={item.old_price}
-            />
-          );
-        })}
+        {lastFourProducts.map((item, i) => (
+          <Item
+            key={i}
+            id={item.id}
+            name={item.name}
+            image={item.image}
+            new_price={item.new_price}
+            old_price={item.old_price}
+          />
+        ))}
       </div>
     </div>
   );

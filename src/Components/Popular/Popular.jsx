@@ -3,35 +3,31 @@ import "./Popular.css";
 // import data_product from "../Assets/Frontend_Assets/data";
 import Item from "../Item/Item";
 
-const Popular = () => {
-  const [popularProducts, setPopularProducts] = useState([]);
+const PopularProducts = ({ popularProducts }) => {
+  const [randomProducts, setRandomProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/newcollections")
-      .then((response) => response.json())
-      .then((data) => setPopularProducts(data));
-  }, []);
+    if (popularProducts.length > 0) {
+      // Shuffle the array and pick 4 random items
+      const shuffled = [...popularProducts].sort(() => 0.5 - Math.random());
+      setRandomProducts(shuffled.slice(0, 4));
+    }
+  }, [popularProducts]);
 
   return (
-    <div className="popular">
-      <h1>Popular Designs</h1>
-      <hr />
-      <div className="popular-item">
-        {popularProducts.map((item, i) => {
-          return (
-            <Item
-              key={i}
-              id={item.id}
-              name={item.name}
-              image={item.image}
-              new_price={item.new_price}
-              old_price={item.old_price}
-            />
-          );
-        })}
-      </div>
+    <div className="popular-item">
+      {randomProducts.map((item, i) => (
+        <Item
+          key={i}
+          id={item.id}
+          name={item.name}
+          image={item.image}
+          new_price={item.new_price}
+          old_price={item.old_price}
+        />
+      ))}
     </div>
   );
 };
 
-export default Popular;
+export default PopularProducts;

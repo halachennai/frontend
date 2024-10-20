@@ -1,0 +1,105 @@
+/* Container for the entire user profile */
+.user-profile-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+.profile-header {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Form group to structure label and input */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Form label styling */
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: bold;
+}
+
+/* Input field styling */
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Input field hover/focus effect */
+.form-input:focus {
+  border-color: #007bff;
+}
+
+/* Save button styling */
+.save-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.save-button:hover {
+  background-color: #0056b3;
+}
+
+/* Profile view info styling */
+.profile-info {
+  font-size: 18px;
+  margin: 5px 0;
+  color: #333;
+}
+
+/* Edit button styling */
+.edit-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #ff8c00;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Edit button hover effect */
+.edit-button:hover {
+  background-color: #e67300;
+}
+
+@media (max-width: 800px) {
+  .edit-button {
+    width: 500px;
+  }
+}
+
+@media (max-width: 500px) {
+  .edit-button {
+    width: 400px;
+  }
+}

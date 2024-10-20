@@ -31,9 +31,18 @@ const ProductDisplay = (props) => {
       <div className="productdisplay-left">
         <div className="productdisplay-img-list">
           <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
+          <img
+            src={product.subimage1 ? product.subimage1 : product.image}
+            alt="Product Image 1"
+          />
+          <img
+            src={product.subimage2 ? product.subimage2 : product.image}
+            alt="Product Image 2"
+          />
+          <img
+            src={product.subimage3 ? product.subimage3 : product.image}
+            alt="Product Image 3"
+          />
         </div>
         <div className="productdisplay-img">
           <img className="productdisplay-main-img" src={product.image} alt="" />

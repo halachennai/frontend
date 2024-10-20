@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import { ShopContext } from "../../Context/ShopContext";
 import { useContext } from "react";
 import { useRef } from "react";
-import nav_dropdown from "../Assets//Custom/dropdown.jpg"
-import { FaRegUserCircle } from "react-icons/fa";;
+import nav_dropdown from "../Assets//Custom/dropdown.jpg";
+import { FaRegUserCircle } from "react-icons/fa";
 
 export const Navbar = () => {
   const [menu, setMenu] = useState("home");
@@ -57,9 +57,9 @@ export const Navbar = () => {
             setMenu("contact");
           }}
         >
-          <Link style={{ textDecoration: "none" }} to="/contact">
+          {/* <Link style={{ textDecoration: "none" }} to="/contact">
             Contact
-          </Link>
+          </Link> */}
           {menu === "contact" ? <hr /> : <></>}
         </li>
       </ul>
@@ -68,7 +68,7 @@ export const Navbar = () => {
           <button
             onClick={() => {
               localStorage.removeItem("auth-token");
-              localStorage.removeItem("email")
+              localStorage.removeItem("email");
               window.location.replace("/");
             }}
           >
@@ -84,7 +84,9 @@ export const Navbar = () => {
         </Link>
 
         <div className="nav-cart-count">{getTotalCartItems()}</div>
-        <Link to ="/userpage" ><FaRegUserCircle/></Link>
+        <Link to="/userpage">
+          <FaRegUserCircle />
+        </Link>
       </div>
     </div>
   );

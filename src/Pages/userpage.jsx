@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./CSS/userpage.css";
 
 const UserPage = () => {
   const [userData, setUserData] = useState({});
@@ -19,12 +20,15 @@ const UserPage = () => {
         }
         setEmail(storedEmail);
 
-        const response = await fetch(`http://localhost:4000/user-profile?email=${storedEmail}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
+        const response = await fetch(
+          `http://localhost:4000/user-profile?email=${storedEmail}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
           }
-        });
+        );
 
         const data = await response.json();
         if (data.success) {
@@ -74,47 +78,63 @@ const UserPage = () => {
   };
 
   return (
-    <div>
-      <h1>User Profile</h1>
+    <div className="user-profile-container">
+      <h1 className="profile-header">User Profile</h1>
       {editMode ? (
-        <div>
-          <label>Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={userData.name || ""}
-            onChange={handleChange}
-          />
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={userData.email || ""}
-            onChange={handleChange}
-          />
-          <label>Phone:</label>
-          <input
-            type="text"
-            name="phone"
-            value={userData.phone || ""}
-            onChange={handleChange}
-          />
-          <label>Address:</label>
-          <input
-            type="text"
-            name="address"
-            value={userData.address || ""}
-            onChange={handleChange}
-          />
-          <button onClick={handleSave}>Save</button>
+        <div className="profile-edit-form">
+          <div className="form-group">
+            <label className="form-label">Name:</label>
+            <input
+              className="form-input"
+              type="text"
+              name="name"
+              value={userData.name || ""}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label className="form-label">Email:</label>
+            <input
+              className="form-input"
+              type="email"
+              name="email"
+              value={userData.email || ""}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label className="form-label">Phone:</label>
+            <input
+              className="form-input"
+              type="text"
+              name="phone"
+              value={userData.phone || ""}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label className="form-label">Address:</label>
+            <input
+              className="form-input"
+              type="text"
+              name="address"
+              value={userData.address || ""}
+              onChange={handleChange}
+            />
+          </div>
+          <button className="save-button" onClick={handleSave}>
+            Save
+          </button>
         </div>
       ) : (
-        <div>
-          <p>Name: {userData.name}</p>
-          <p>Email: {userData.email}</p>
-          <p>Phone: {userData.phone}</p>
-          <p>Address: {userData.address}</p>
-          <button onClick={toggleEditMode}>Edit</button>
+        <div className="profile-view">
+          <p className="profile-info">Name: {userData.name}</p>
+          <p className="profile-info">Email: {userData.email}</p>
+          <p className="profile-info">Phone: {userData.phone}</p>
+          <p className="profile-info">Address: {userData.address}</p>
+          <button className="edit-button" onClick={toggleEditMode}>
+            Edit
+          </button>
         </div>
       )}
     </div>

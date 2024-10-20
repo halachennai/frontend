@@ -3,10 +3,12 @@ import "./Footer.css";
 import logo from "../Assets/Custom/logo.png";
 import instagram_icon from "../Assets/Frontend_Assets/instagram_icon.png";
 import whatsapp_icon from "../Assets/Frontend_Assets/whatsapp_icon.png";
+import DeliveryNote from "../DeliveryNote/DeliveryNote";
 
 const Footer = () => {
   return (
     <div className="footer">
+      <DeliveryNote />
       <div className="footer-logo">
         <img src={logo} alt="" />
       </div>
